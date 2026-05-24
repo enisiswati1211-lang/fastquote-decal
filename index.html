@@ -3,171 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastQuote Decal - Premium System</title>
+    <title>Pusat Decal - Premium Calculator System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; font-family: 'Montserrat', 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background-color: #08080a; 
+            background-color: #060608; 
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.15) 0%, transparent 50%),
-                linear-gradient(135deg, #08080a 0%, #111115 100%);
-            color: #f1f1f3; 
+                radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.2) 0%, transparent 60%),
+                linear-gradient(180deg, #060608 0%, #0d0d12 100%);
+            color: #e2e2e9; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             justify-content: flex-start; 
             min-height: 100vh; 
-            padding: 40px 15px; 
+            padding: 30px 12px; 
         }
 
-        .brand-header { text-align: center; margin-bottom: 30px; position: relative; }
-        .brand-logo { font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #ffffff; }
-        .brand-logo span { color: #ff4500; text-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
-        .brand-tagline { font-size: 10px; text-transform: uppercase; letter-spacing: 6px; color: #666673; margin-top: 4px; font-weight: 600; }
-        .brand-stripe { width: 50px; height: 3px; background: #ff4500; margin: 12px auto 0 auto; border-radius: 2px; }
+        /* Header Bergaya Striping Motor Sport */
+        .brand-header { text-align: center; margin-bottom: 25px; position: relative; width: 100%; max-width: 520px;}
+        .brand-logo { font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #ffffff; line-height: 1; }
+        .brand-logo span { color: #ff4500; text-shadow: 0 0 20px rgba(255, 69, 0, 0.7); }
+        .brand-tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; color: #5a5a6e; margin-top: 6px; font-weight: 700; }
+        
+        /* Badging Akselerasi Garis */
+        .brand-stripes { display: flex; justify-content: center; gap: 4px; margin-top: 10px; transform: skewX(-25deg); }
+        .stripe-l { width: 40px; height: 4px; background: #ff4500; }
+        .stripe-s { width: 12px; height: 4px; background: #ffaa00; }
 
+        /* Container Utama dengan Efek Carbon Dark Panel */
         .container, .history-container { 
-            background: rgba(19, 19, 24, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            background: linear-gradient(145deg, #101015 0%, #09090d 100%);
+            border: 1px solid rgba(255, 69, 0, 0.15);
+            padding: 25px; 
+            border-radius: 16px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.05); 
             width: 100%; 
-            max-width: 550px; 
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            max-width: 520px; 
             margin-bottom: 25px; 
+            position: relative;
         }
 
-        .container { border-top: 4px solid #ff4500; }
+        /* Garis kilau oranye di atas panel */
+        .container::before {
+            content: ''; position: absolute; top: -1px; left: 30px; right: 30px; height: 2px;
+            background: linear-gradient(90deg, transparent, #ff4500, #ffaa00, transparent);
+        }
 
-        .form-group { margin-bottom: 18px; }
-        .row-grid { display: grid; grid-template-columns: repeat(3, 11fr); gap: 12px; }
-        .row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-group { margin-bottom: 16px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         
-        label { display: block; margin-bottom: 8px; font-size: 10px; color: #8a8a98; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        label { display: block; margin-bottom: 6px; font-size: 12px; color: #8a8a9e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
+        /* Input & Select dengan sudut tegas & list neon */
         input, select { 
             width: 100%; 
-            padding: 14px 16px; 
-            border: 1px solid #22222a; 
-            background-color: #16161c; 
+            padding: 12px 14px; 
+            border: 1px solid #1f1f27; 
+            background-color: #0b0b0f; 
             color: #fff; 
-            border-radius: 10px; 
-            font-size: 14px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
             outline: none; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: all 0.25s ease;
         }
         
         input:focus, select:focus { 
             border-color: #ff4500; 
-            background-color: #1a1a24;
-            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.15);
+            background-color: #111116;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.25);
         }
 
-        .input-nama { border-left: 3px solid #ff4500; font-weight: 600; }
+        .input-nama { border-left: 4px solid #ff4500; font-size: 17px; letter-spacing: 0.5px; }
         
         .search-bahan { 
-            border-left: 3px solid #ffaa00; 
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23666673" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>'); 
+            border-left: 4px solid #ffaa00;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23ffaa00" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>'); 
             background-repeat: no-repeat; 
-            background-position: calc(100-16px) center; 
-            background-position: right 16px center;
+            background-position: right 14px center;
+            padding-right: 38px;
         }
 
-        select[size] { min-height: 110px; padding: 6px; }
-        select[size] option { padding: 10px; border-radius: 6px; margin-bottom: 4px; cursor: pointer; }
-        select[size] option:checked { background: linear-gradient(90deg, #ff4500, #ff6200) !important; color: white; }
+        select[size] { min-height: 120px; padding: 4px; scrollbar-width: thin; }
+        select[size] option { padding: 8px 10px; border-radius: 6px; margin-bottom: 3px; cursor: pointer; transition: 0.1s; }
+        select[size] option:checked { background: linear-gradient(90deg, #ff4500, #ff8000) !important; color: white; font-weight: 700; }
 
+        /* Checkbox Modern Custom-look */
         .checkbox-group { 
             display: flex; 
             align-items: center; 
-            background: #16161c; 
-            padding: 14px 16px; 
-            border-radius: 10px; 
-            border: 1px solid #22222a; 
+            background: #0b0b0f; 
+            padding: 14px; 
+            border-radius: 8px; 
+            border: 1px solid #1f1f27; 
             cursor: pointer; 
             user-select: none; 
             transition: 0.2s; 
         }
-        .checkbox-group:hover { border-color: rgba(255,69,0,0.4); }
-        .checkbox-group input { width: auto; margin-right: 12px; transform: scale(1.2); accent-color: #ff4500; }
-        .checkbox-group label { margin-bottom: 0; cursor: pointer; font-size: 13px; color: #d1d1d6; text-transform: none; letter-spacing: 0; }
+        .checkbox-group:hover { border-color: rgba(255, 69, 0, 0.4); background: #111116; }
+        .checkbox-group input { width: auto; margin-right: 12px; transform: scale(1.3); accent-color: #ff4500; cursor: pointer; }
+        .checkbox-group label { margin-bottom: 0; cursor: pointer; font-size: 14px; color: #e2e2e9; text-transform: none; letter-spacing: 0; }
 
+        /* Panel Dashboard Speedometer untuk Tampilan Harga */
         .result-box { 
-            background: linear-gradient(180deg, #16161c 0%, #0d0d12 100%);
-            padding: 22px; 
-            margin-top: 25px; 
-            border-radius: 14px; 
-            border: 1px solid #22222a; 
+            background: #07070a;
+            padding: 20px; 
+            margin-top: 22px; 
+            border-radius: 12px; 
+            border: 1px solid #1f1f27;
             position: relative;
-            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
         }
-        .result-box::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #30d158; }
-
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #9a9a1a; color: #8a8a98; }
-        .result-row span:last-child { font-weight: 600; color: #ffffff; }
         
-        .result-title { font-size: 10px; color: #8a8a98; text-transform: uppercase; margin-top: 10px; letter-spacing: 1px; font-weight: 700; }
-        .result-value-jual { font-size: 36px; font-weight: 900; color: #30d158; margin-top: 4px; letter-spacing: -0.5px; }
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 14px; color: #7e7e8f; }
+        .result-row span:last-child { font-weight: 700; color: #ffffff; }
+        
+        .result-title { font-size: 11px; color: #8a8a9e; text-transform: uppercase; margin-top: 12px; letter-spacing: 1.5px; font-weight: 700; text-align: center;}
+        
+        /* Angka Jual Utama Bergaya Digital Spidometer */
+        .result-value-jual { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 38px; 
+            font-weight: 900; 
+            color: #30d158; 
+            text-align: center;
+            margin-top: 4px; 
+            letter-spacing: -1px;
+            text-shadow: 0 0 15px rgba(48, 209, 88, 0.4);
+        }
 
-        .action-buttons { display: flex; gap: 12px; margin-top: 25px; }
+        /* Tombol Aksi */
+        .action-buttons { display: flex; gap: 12px; margin-top: 22px; }
         .btn-main { 
             flex: 1; 
-            padding: 16px; 
+            padding: 15px; 
             color: white; 
             border: none; 
-            border-radius: 12px; 
-            font-size: 13px; 
+            border-radius: 10px; 
+            font-size: 14px; 
             font-weight: 700; 
             cursor: pointer; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            transition: all 0.2s ease; 
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            gap: 8px; 
+            gap: 6px; 
         }
         
-        .btn-copy { background: #22222a; border: 1px solid #32323f; color: #d1d1d6; }
-        .btn-copy:hover { background: #2c2c36; color: #fff; transform: translateY(-2px); }
+        .btn-copy { background: #1a1a24; border: 1px solid #2d2d3a; color: #c5c5d2; }
+        .btn-copy:hover { background: #242432; color: #fff; transform: scale(1.02); }
         
-        .btn-wa { background: linear-gradient(135deg, #25D366 0%, #1cbd59 100%); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25); }
-        .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        .btn-wa { background: linear-gradient(135deg, #1cbd59 0%, #128c7e 100%); box-shadow: 0 5px 15px rgba(28, 189, 89, 0.3); }
+        .btn-wa:hover { transform: scale(1.02); box-shadow: 0 8px 22px rgba(28, 189, 89, 0.5); }
 
-        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #22222a; padding-bottom: 12px; }
-        .history-header h3 { color: #ff4500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        /* Tabel Riwayat Cetak */
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #1f1f27; padding-bottom: 10px; }
+        .history-header h3 { color: #ff4500; font-family: 'Orbitron', sans-serif; font-size: 13px; letter-spacing: 1px; }
+        .btn-clear { padding: 4px 10px; background: transparent; color: #ff453a; border: 1px solid rgba(255,69,58,0.2); border-radius: 6px; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+        .btn-clear:hover { background: #ff453a; color: #fff; }
         
         .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
-        th, td { padding: 14px 12px; border-bottom: 1px solid #16161c; white-space: nowrap; }
-        th { background-color: #0d0d12; color: #666673; font-weight: 700; text-transform: uppercase; font-size: 9px; letter-spacing: 1px; border-radius: 4px; }
-        tr:hover { background-color: #16161c; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+        th, td { padding: 12px 10px; border-bottom: 1px solid #0e0e14; white-space: nowrap; }
+        th { background-color: #060608; color: #5a5a6e; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        tr:hover { background-color: #12121a; }
         
-        .row-total-summary { background-color: #0d0d12 !important; font-weight: bold; border-top: 2px solid #22222a; }
+        .row-total-summary { background-color: #060608 !important; font-weight: bold; border-top: 2px solid #1f1f27; font-size: 14px;}
         .text-green { color: #30d158; font-weight: 700; }
         .text-orange { color: #ff9f0a; font-weight: 700; }
-        .text-time { color: #555562; font-size: 11px; }
-        .no-data { text-align: center; color: #44444f; padding: 35px 0; font-style: italic; }
+        .text-time { color: #444455; font-size: 12px; }
+        .no-data { text-align: center; color: #444455; padding: 25px 0; font-style: italic; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="brand-header">
-    <div class="brand-logo">FastQuote <span>Decal</span></div>
-    <div class="brand-tagline">Pro Calculator System</div>
-    <div class="brand-stripe"></div>
+    <div class="brand-logo">Pusat <span>Decal</span></div>
+    <div class="brand-tagline">Premium Calculator System</div>
+    <div class="brand-stripes">
+        <div class="stripe-l"></div>
+        <div class="stripe-s"></div>
+    </div>
 </div>
 
 <div class="container">
     <div class="form-group">
         <label for="nama-order">Nama Konsumen / Orderan</label>
-        <input type="text" id="nama-order" class="input-nama" placeholder="Contoh: Honda CRF Dani" oninput="hitungTotal()">
+        <input type="text" id="nama-order" class="input-nama" placeholder="Contoh: KAWASAKI KLX DANI" oninput="hitungTotal()">
     </div>
 
-    <div class="row-grid form-group">
+    <div class="grid-3 form-group">
         <div>
             <label for="lebar">Lebar (cm)</label>
             <input type="number" id="lebar" placeholder="124" oninput="hitungTotal()">
@@ -184,8 +220,8 @@
 
     <div class="form-group">
         <label for="search-bahan">Cari & Pilih Bahan</label>
-        <input type="text" id="search-bahan" class="search-bahan" placeholder="Ketik nama bahan..." oninput="filterBahan()">
-        <select id="bahan" size="4" style="margin-top: 8px;" onchange="updateLaminasiOptions()"></select>
+        <input type="text" id="search-bahan" class="search-bahan" placeholder="Ketik nama bahan (contoh: chrome, max...)" oninput="filterBahan()">
+        <select id="bahan" size="4" style="margin-top: 6px;" onchange="updateLaminasiOptions()"></select>
     </div>
 
     <div class="form-group">
@@ -193,7 +229,7 @@
         <select id="laminasi" onchange="hitungTotal()"></select>
     </div>
 
-    <div class="row-split form-group">
+    <div class="grid-2 form-group">
         <div>
             <label for="margin">Mark-up Untung (%)</label>
             <input type="number" id="margin" value="30" min="0" oninput="hitungTotal()">
@@ -213,28 +249,28 @@
     
     <div class="result-box">
         <div class="result-row">
-            <span>Luas Total</span>
+            <span>Luas Total Area :</span>
             <span id="luas-info">0 cm²</span>
         </div>
         <div class="result-row">
-            <span>Modal Intern Toko</span>
-            <span id="total-modal" style="color: #ff9f0a;">Rp 0</span>
+            <span>Modal Intern Toko :</span>
+            <span id="total-modal" class="text-orange">Rp 0</span>
         </div>
-        <hr style="border: 0; border-top: 1px solid #22222a; margin: 12px 0;">
+        <hr style="border: 0; border-top: 1px dashed #1f1f27; margin: 10px 0;">
         <div class="result-title">Harga Jual Akhir Ke Konsumen</div>
         <div class="result-value-jual" id="total-harga-jual">Rp 0</div>
     </div>
 
     <div class="action-buttons">
-        <button class="btn-main btn-copy" onclick="salinRincianDanSimpan()">📋 Salin Rincian</button>
-        <button class="btn-main btn-wa" onclick="kirimWhatsApp()">💬 Kirim Ke WA</button>
+        <button class="btn-main btn-copy" onclick="salinRincianDanSimpan()">📋 Copy Nota</button>
+        <button class="btn-main btn-wa" onclick="kirimWhatsApp()">💬 Kirim WA</button>
     </div>
 </div>
 
 <div class="history-container">
     <div class="history-header">
-        <h3>📋 Log Riwayat Cetak</h3>
-        <button class="btn-clear" onclick="hapusSemuaRiwayat()">🗑️ Clear</button>
+        <h3>📋 LOG RIWAYAT CETAK</h3>
+        <button class="btn-clear" onclick="hapusSemuaRiwayat()">🗑️ Reset</button>
     </div>
     <div class="table-responsive">
         <table>
@@ -243,7 +279,7 @@
                     <th>Waktu</th>
                     <th>Nama Orderan</th>
                     <th>Bahan & Lapisan</th>
-                    <th>Ukuran (Qty)</th>
+                    <th>Dimensi (Qty)</th>
                     <th>Modal</th>
                     <th>Harga Jual</th>
                 </tr>
@@ -351,7 +387,7 @@
             nama: nama, bahan: bText, laminasi: lamText + (cbCutting ? ' + Cut' : ''), dimensi: `${lb}x${pj} (${qty})`, numModal: modalTotal, numJual: hargaJualMurni
         };
 
-        teksNotaClient = `*FASTQUOTE DECAL - NOTA PEMESANAN*\n-----------------------------------------\n• Konsumen     : ${nama}\n• Jenis Bahan  : ${bText}\n• Finishing     : ${lamText}\n• Ukuran        : ${lb} cm x ${pj} cm\n• Cutting       : ${cbCutting ? 'Ya' : 'Tidak'}\n• Jumlah        : ${qty} pcs\n${biayaTambahan > 0 ? `• Biaya Desain/Pasang : ${fmt.format(biayaTambahan)}\n` : ''}-----------------------------------------\n*Total Biaya:* ${fmt.format(hargaJualMurni)}\n\nTerima kasih! 🙏`;
+        teksNotaClient = `*PUSAT DECAL - NOTA ORDERAN*\n-----------------------------------------\n• Pelanggan   : ${nama}\n• Tipe Bahan  : ${bText}\n• Lapisan      : ${lamText}\n• Dimensi Ukuran : ${lb} cm x ${pj} cm\n• Cutting Pola  : ${cbCutting ? 'Ya' : 'Tidak'}\n• Kuantitas    : ${qty} pcs\n${biayaTambahan > 0 ? `• Jasa Pasang/Desain : ${fmt.format(biayaTambahan)}\n` : ''}-----------------------------------------\n*TOTAL BILL:* ${fmt.format(hargaJualMurni)}\n\nDiproses dengan sistem digital. Terima kasih! ⚡`;
     }
 
     function simpanKeRiwayatLokal() {
@@ -359,20 +395,20 @@
         const jamStr = sekarang.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
         const recordBaru = { waktu: jamStr, ...currentDataRecord };
         daftarRiwayat.unshift(recordBaru);
-        localStorage.setItem('fastquote_history', JSON.stringify(daftarRiwayat));
+        localStorage.setItem('pusatdecal_history', JSON.stringify(daftarRiwayat));
         renderTabelRiwayat();
     }
 
     function salinRincianDanSimpan() {
-        if (!document.getElementById('lebar').value || !document.getElementById('panjang').value) { alert("Isi ukuran stiker!"); return; }
+        if (!document.getElementById('lebar').value || !document.getElementById('panjang').value) { alert("Isi dimensi stiker!"); return; }
         navigator.clipboard.writeText(teksNotaClient).then(() => {
             simpanKeRiwayatLokal();
-            alert(`Nota "${currentDataRecord.nama}" berhasil disalin ke memori!`);
+            alert(`Nota rincian "${currentDataRecord.nama}" disalin!`);
         });
     }
 
     function kirimWhatsApp() {
-        if (!document.getElementById('lebar').value || !document.getElementById('panjang').value) { alert("Isi ukuran stiker!"); return; }
+        if (!document.getElementById('lebar').value || !document.getElementById('panjang').value) { alert("Isi dimensi stiker!"); return; }
         simpanKeRiwayatLokal();
         const urlWA = `https://api.whatsapp.com/send?text=${encodeURIComponent(teksNotaClient)}`;
         window.open(urlWA, '_blank');
@@ -382,22 +418,22 @@
         const tbody = document.getElementById('log-riwayat');
         const tfoot = document.getElementById('tfoot-total');
         tbody.innerHTML = ''; tfoot.innerHTML = '';
-        if (daftarRiwayat.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="no-data">Belum ada transaksi.</td></tr>`; return; }
+        if (daftarRiwayat.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="no-data">Belum ada rekapan cetak hari ini.</td></tr>`; return; }
         let rekapModal = 0; let rekapJual = 0;
         daftarRiwayat.forEach(item => {
             rekapModal += item.numModal; rekapJual += item.numJual;
             let row = document.createElement('tr');
-            row.innerHTML = `<td class="text-time">${item.waktu}</td><td style="color:#ff4500;font-weight:600;">${item.nama}</td><td><strong>${item.bahan}</strong><br><small style="color:#8a8a98">${item.laminasi}</small></td><td>${item.dimensi}</td><td class="text-orange">${fmt.format(item.numModal)}</td><td class="text-green">${fmt.format(item.numJual)}</td>`;
+            row.innerHTML = `<td class="text-time">${item.waktu}</td><td style="color:#ff4500;font-weight:700;">${item.nama}</td><td><strong>${item.bahan}</strong><br><small style="color:#6a6a7e">${item.laminasi}</small></td><td>${item.dimensi}</td><td class="text-orange">${fmt.format(item.numModal)}</td><td class="text-green">${fmt.format(item.numJual)}</td>`;
             tbody.appendChild(row);
         });
         let footerRow = document.createElement('tr');
         footerRow.className = "row-total-summary";
-        footerRow.innerHTML = `<td colspan="4" style="text-align:right;padding:14px 10px;">🔥 TOTAL REKAP :</td><td class="text-orange" style="padding:14px 10px;">${fmt.format(rekapModal)}</td><td class="text-green" style="padding:14px 10px;">${fmt.format(rekapJual)}</td>`;
+        footerRow.innerHTML = `<td colspan="4" style="text-align:right;padding:12px 10px;">⚡ REKAP TOTAL OMZET :</td><td class="text-orange">${fmt.format(rekapModal)}</td><td class="text-green">${fmt.format(rekapJual)}</td>`;
         tfoot.appendChild(footerRow);
     }
 
-    function hapusSemuaRiwayat() { if (confirm("Hapus semua riwayat di perangkat ini?")) { daftarRiwayat = []; localStorage.removeItem('fastquote_history'); renderTabelRiwayat(); } }
-    window.onload = function() { const riwayatLama = localStorage.getItem('fastquote_history'); if (riwayatLama) daftarRiwayat = JSON.parse(riwayatLama); renderTabelRiwayat(); initBahan(); }
+    function hapusSemuaRiwayat() { if (confirm("Kosongkan semua riwayat log cetak?")) { daftarRiwayat = []; localStorage.removeItem('pusatdecal_history'); renderTabelRiwayat(); } }
+    window.onload = function() { const riwayatLama = localStorage.getItem('pusatdecal_history'); if (riwayatLama) daftarRiwayat = JSON.parse(riwayatLama); renderTabelRiwayat(); initBahan(); }
 </script>
 </body>
 </html>
